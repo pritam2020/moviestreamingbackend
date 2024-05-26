@@ -14,12 +14,12 @@ const connection = mysql.createConnection({
   });
   router.post("/",bodyParser.json(), (req, res) => {
     console.log(req.body.Username);
-    createUser(req.body.Username, req.body.Password, req.body.FirstName, req.body.LastName, req.body.EmailId, req, res);
+    createUser(req.body.Username, req.body.Password, req.body.FirstName, req.body.LastName, req.body.EmailId, req.body.Country, req.body.Pincode, req.body.City, req, res);
   
   });
 
 
-  async function createUser(username, password, FirstName, LastName, Email, req, res) {
+  async function createUser(username, password, FirstName, LastName, Email, Country, PinCode, City, req, res) {
     console.log(username + "..this is from function");
     console.log(password + "..this is from function");
     console.log(Email + "..this is from function");
@@ -31,8 +31,8 @@ const connection = mysql.createConnection({
       console.log(hashedPassword);
   
       // Insert the user into the database
-      const sqlQuery = 'INSERT INTO users (Username, Password_Hash, FirstName, LastName, EmailId) VALUES (?, ?, ?, ?, ? )';
-      connection.query(sqlQuery, [username, hashedPassword, FirstName, LastName, Email], (err, result) => {
+      const sqlQuery = 'INSERT INTO users (Username, Password_Hash, FirstName, LastName, EmailId, County, PinCode, City) VALUES (?, ?, ?, ?, ?, ?, ?, ? )';
+      connection.query(sqlQuery, [username, hashedPassword, FirstName, LastName, Email, Country, PinCode, City ], (err, result) => {
         if (err) {
           console.error("Error inserting user into DB:", err);
           res.status(500).json({ message: "Error inserting user into DB", status: err });

@@ -13,9 +13,12 @@ const awardwinningRouter = require("./Routers/home/awardwinning");
 const warRouter = require("./Routers/home/war");
 const documentaryRouter = require("./Routers/home/documentary");
 const streamingRouter = require("./Routers/streaming/streaming");
+const search = require("./Routers/home/search");
 const login = require("./Routers/authentication/login");
 const logout = require("./Routers/authentication/logout");
 const signup = require("./Routers/authentication/signup");
+const account = require("./Routers/account");
+
 const express = require("express");
 const session = require("express-session");
 const app = express();
@@ -65,9 +68,13 @@ app.use("/protected-route/moviedetails/awardwinning", awardwinningRouter);
 app.use("/protected-route/moviedetails/thriller", thrillerRouter);
 app.use("/protected-route/moviedetails/fantasy", fantasyRouter);
 app.use("/protected-route/moviedetails", streamingRouter);
+app.use("/protected-route/moviedetails/search", search);
+
 app.use("/clientlogin",login);
 app.use("/clientsignup",signup);
 app.use("/protected-route/clientlogout",logout);
+app.use("/protected-route/clientaccount",account);
+
 
 app.listen(PORT, () => {
   console.log(`node server is running on port : ${PORT}....`);
