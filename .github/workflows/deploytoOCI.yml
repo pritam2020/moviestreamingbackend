@@ -3,7 +3,7 @@ name: Deploy to OCI
 on:
   push:
     branches:
-      - main  # Deploy only when pushing to the main branch
+      - master  # Deploy only when pushing to the main branch
 
 jobs:
   deploy:
