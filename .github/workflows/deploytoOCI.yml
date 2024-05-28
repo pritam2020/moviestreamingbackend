@@ -27,4 +27,4 @@ jobs:
 
     - name: Sync files to remote server
       run: |
-        rsync -avz --delete-after ./ opc@155.248.245.222:/home/opc/moviestreaming
+        rsync -avz --delete-after ./ opc@155.248.245.222:/home/opc/moviestreamingbackend
