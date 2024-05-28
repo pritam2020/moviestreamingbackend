@@ -1,25 +1,30 @@
-name: Deploy to OCI
+name: Deploy to Remote Server OCI
 
 on:
   push:
     branches:
-      - master  # Deploy only when pushing to the main branch
+      - master
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-      - name: Set up SSH
-        uses: webfactory/ssh-agent@v0.5.3
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+    - name: Set up SSH key
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      run: |
+        mkdir -p ~/.ssh
+        echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
 
-      - name: Deploy files to remote server
-        run: |
-          rsync -avz --delete-after ./ opc@155.248.245.222:/home/opc/moviestreaming
-        env:
-          SSH_AUTH_SOCK: /tmp/ssh-agent.sock
+    - name: Add remote server to known hosts
+      run: |
+        ssh-keyscan 155.248.245.222 >> ~/.ssh/known_hosts
+
+    - name: Sync files to remote server
+      run: |
+        rsync -avz --delete-after ./ opc@155.248.245.222:/home/opc/moviestreaming
