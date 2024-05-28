@@ -1,0 +1,25 @@
+name: Deploy to OCI
+
+on:
+  push:
+    branches:
+      - main  # Deploy only when pushing to the main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Deploy files to remote server
+        run: |
+          rsync -avz --delete-after ./ opc@155.248.245.222:/path/to/deployment/directory
+        env:
+          SSH_AUTH_SOCK: /tmp/ssh-agent.sock
