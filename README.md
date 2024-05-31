@@ -6,7 +6,7 @@
 
 This is a movie streaming api. this api works like a sliding window it gives response/results for a window of 3 months and for every three month window it consists all the latest movies of hindi, bengali, english origin of the current window.
 
-**Sliding-window Concept** **:**
+**Sliding-window Concept** **:** [click to checkout](./docs/slidingWindow.md)
 
 ## Genres
  There are 14 genre present in the api now. Later there will also be other genre.
