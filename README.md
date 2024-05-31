@@ -50,6 +50,13 @@ This is a movie streaming api. this api works like a sliding window it gives res
 |`/protected-route/clientlogout`| Logout's the user
 |`/protected-route/clientaccount`| Gives the User details
 
+## Request
+Request are sent as json, every endpoint has different fields or key value pair.all the routes are protected routes user cannot access the routes until and unless they login's.
+[Know more about requests](./docs/request.md) 
+
+## Response
+Responses are also sent as json, every endpoint has different fields or key value pair.
+[Know more about requests](./docs/response.md) 
 
 ## Restriction
 
@@ -58,6 +65,4 @@ There are certain restriction in the api endpoints please refer below for it.
 **Restriction for search**
 >/protected-route/moviedetails/search
 
-
-	CODE BLOCK
-[check Restriction](./docs/Restriction.md)
+[check more about Restriction](./docs/Restriction.md)
