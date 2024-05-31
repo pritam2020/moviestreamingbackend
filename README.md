@@ -66,3 +66,5 @@ There are certain restriction in the api endpoints please refer below for it.
 >/protected-route/moviedetails/search
 
 [check more about Restriction](./docs/Restriction.md)
+
+[Know more](./docs/knowMore.md)
