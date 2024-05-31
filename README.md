@@ -60,4 +60,4 @@ There are certain restriction in the api endpoints please refer below for it.
 
 
 	CODE BLOCK
-[check Restriction](./docs/restrictions.md)
+[check Restriction](./docs/Restriction.md)
